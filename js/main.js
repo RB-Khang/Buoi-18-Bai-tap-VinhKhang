@@ -1,4 +1,5 @@
 var btnNhap = document.getElementById('btn__input')
+var btnNhap2 = document.getElementById('btn__input2')
 var btnReset = document.getElementById('btn__reset')
 var myArray = [];
 
@@ -13,11 +14,22 @@ btnReset.onclick = function () {
 
 btnNhap.onclick = function () {
     var arrayInput = +document.querySelector('#number__input').value;
-    if (isNaN(arrayInput)) {
-        alert('Nhập số nha a iu');
+    if (isNaN(arrayInput)||Number.isInteger(arrayInput)!== true) {
+        alert('Nhập số nguyên nha a iu');
     } else {
         myArray.push(arrayInput);
         document.querySelector('#array').innerHTML = myArray;
+    }
+
+}
+
+btnNhap2.onclick = function () {
+    var arrayInput = +document.querySelector('#number__input2').value;
+    if (isNaN(arrayInput)) {
+        alert('Nhập số nguyên nha a iu');
+    } else {
+        myArray.push(arrayInput);
+        document.querySelector('#array2').innerHTML = myArray;
     }
 
 }
