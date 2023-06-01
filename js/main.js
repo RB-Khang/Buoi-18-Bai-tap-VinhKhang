@@ -24,9 +24,9 @@ btnNhap.onclick = function () {
 
 function tinhTong() {
     var sum1 = 0;
-    for (i = 0; i < myArray.length; i++) {
-        if (myArray[i] >= 0) {
-            sum1 += myArray[i];
+    for (var e = 0; e < myArray.length; e++) {
+        if (myArray[e] >= 0) {
+            sum1 += myArray[e];
         }
     }
     return sum1;
@@ -34,7 +34,7 @@ function tinhTong() {
 
 function demSoDuong() {
     var sum2 = 0;
-    for (i = 0; i < myArray.length; i++) {
+    for (var i = 0; i < myArray.length; i++) {
         if (myArray[i] >= 0) {
             sum2 += 1;
         }
@@ -43,7 +43,7 @@ function demSoDuong() {
 }
 function timMin() {
     var min = Infinity;
-    for (i = 0; i < myArray.length; i++) {
+    for (var i = 0; i < myArray.length; i++) {
         if (myArray[i] < min) {
             min = myArray[i];
         }
@@ -55,7 +55,7 @@ function timMin() {
 }
 function timMinDuong() {
     var minDuong = Infinity;
-    for (i = 0; i < myArray.length; i++) {
+    for (var i = 0; i < myArray.length; i++) {
         if (0 <= myArray[i] && myArray[i] < minDuong) {
             minDuong = myArray[i];
             console.log(minDuong)
@@ -68,7 +68,7 @@ function timMinDuong() {
 }
 function lastEven() {
     var lastEven = Infinity;
-    for (i = 0; i < myArray.length; i++) {
+    for (var i = 0; i < myArray.length; i++) {
         if (myArray[i] % 2 === 0) {
             lastEven = myArray[i];
             console.log(lastEven)
@@ -94,41 +94,29 @@ function swap() {
     return newArray
 }
 function soNguyento(n) {
-    if (n <= 2) {
-        return false
-    } else {
-        var count = 0
-        for (i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i === 0) {
-                count += 1;
-            }
+    if (n <= 2) return false;
+    for (var i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i == 0) {
+            return false;
         }
-        if (count !== 0) {
-            return false
-        } else return true;
     }
+    return true;
 }
+
+
 
 
 function timSnt() {
 var temp1 = 0;
-var loop = false;
-for ( i =0; i < myArray.length; i++){
-    if ((soNguyento(myArray[i]))===true) {
-        temp1 = myArray[i];
-        loop = true;
-
-        console.log(temp1)
+var isFlash = false;
+for ( var i =0 ; i < myArray.length; i++){
+    if (soNguyento(myArray[i])) {
+        temp1 += myArray[i];
+        isFlash = true;
         break
-
     }
 }
-if (loop ===false){
-    return 'Không có số nguyên tố'
-}else if (loop ===true){
-    return temp1;
-}
-
+return isFlash ? temp1 : 'Không có số nguyên tố';
 }
 
 
@@ -178,8 +166,8 @@ btn7.onclick = function () {
 
 var btn8 = document.getElementById('btn8');
 btn8.onclick = function () {
-
-    document.getElementById('kq8').innerHTML = 'Số nguyên tố là : '+ timSnt()
+document.getElementById('kq8').innerHTML = timSnt();
+   
     
 }
 
