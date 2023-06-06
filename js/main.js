@@ -2,6 +2,7 @@ var btnNhap = document.getElementById('btn__input')
 var btnNhap2 = document.getElementById('btn__input2')
 var btnReset = document.getElementById('btn__reset')
 var myArray = [];
+var myArray2 = []
 
 
 
@@ -14,7 +15,7 @@ btnReset.onclick = function () {
 
 btnNhap.onclick = function () {
     var arrayInput = +document.querySelector('#number__input').value;
-    if (isNaN(arrayInput)||Number.isInteger(arrayInput)!== true) {
+    if (isNaN(arrayInput) || Number.isInteger(arrayInput) !== true) {
         alert('Nhập số nguyên nha a iu');
     } else {
         myArray.push(arrayInput);
@@ -24,12 +25,12 @@ btnNhap.onclick = function () {
 }
 
 btnNhap2.onclick = function () {
-    var arrayInput = +document.querySelector('#number__input2').value;
-    if (isNaN(arrayInput)) {
-        alert('Nhập số nguyên nha a iu');
+    var arrayInput2 = +document.querySelector('#number__input2').value;
+    if (isNaN(arrayInput2)) {
+        alert('Nhập số thực nha a iu');
     } else {
-        myArray.push(arrayInput);
-        document.querySelector('#array2').innerHTML = myArray;
+        myArray2.push(arrayInput2);
+        document.querySelector('#array2').innerHTML = myArray2;
     }
 
 }
@@ -106,32 +107,67 @@ function swap() {
     return newArray
 }
 function soNguyento(n) {
-    if (n <= 2) return false;
-    for (var i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i == 0) {
-            return false;
-        }
+    if (n < 2) {
+        return false;
     }
-    return true;
+    else if (n === 2) {
+        return true;
+    }
+    else {
+        for (var i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
+
 
 
 
 
 function timSnt() {
-var temp1 = 0;
-var isFlash = false;
-for ( var i =0 ; i < myArray.length; i++){
-    if (soNguyento(myArray[i])) {
-        temp1 += myArray[i];
-        isFlash = true;
-        break
+    var temp1 = 0;
+    var isFlash = false;
+    for (var i = 0; i < myArray.length; i++) {
+        if (soNguyento(myArray[i])) {
+            temp1 += myArray[i];
+            isFlash = true;
+            break
+        }
     }
-}
-return isFlash ? temp1 : 'Không có số nguyên tố';
+    return isFlash ? temp1 : 'Không có số nguyên tố';
 }
 
 
+function demSoNguyen() {
+    var count = 0
+    for (var i = 0; i < myArray2.length; i++) {
+        if (Number.isInteger(myArray2[i]) === true) {
+            count += 1
+        }
+    }
+    return count
+}
+
+function demAmDuong() {
+    var soAm = 0;
+    var soDuong = 0;
+    for (var i = 0; i < myArray.length; i++) {
+        if (myArray[i] < 0) {
+            soAm += 1;
+        } else {
+            soDuong += 1
+        }
+    }
+    if (soAm<soDuong){
+        return 'Số số âm là: ' + soAm + '; Số số dương là: '+ soDuong + '; Nên số số âm ít hơn số số dương'
+    }else 
+    if (soAm>soDuong){
+        return 'Số số âm là: ' + soAm + '; Số số dương là: '+ soDuong + '; Nên số số âm nhiều hơn số số dương'
+    } else return 'Số số âm bằng số số dương và bằng: ' +soAm
+}
 
 
 
@@ -178,11 +214,22 @@ btn7.onclick = function () {
 
 var btn8 = document.getElementById('btn8');
 btn8.onclick = function () {
-document.getElementById('kq8').innerHTML = timSnt();
-   
-    
+    document.getElementById('kq8').innerHTML = timSnt();
 }
 
+var btn9 = document.getElementById('btn9');
+btn9.onclick = function () {
+    document.getElementById('kq9').innerHTML = 'Số số nguyên trong mảng là: ' + demSoNguyen()
+
+}
+
+
+var btn10 = document.getElementById('btn10');
+btn10.onclick = function () {
+    document.getElementById('kq10').innerHTML = demAmDuong();
+
+
+}
 
 
 
