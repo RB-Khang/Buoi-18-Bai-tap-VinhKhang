@@ -71,7 +71,6 @@ function timMinDuong() {
     for (var i = 0; i < myArray.length; i++) {
         if (0 <= myArray[i] && myArray[i] < minDuong) {
             minDuong = myArray[i];
-            console.log(minDuong)
         }
     }
     if (minDuong == Infinity) {
@@ -99,8 +98,7 @@ function swap() {
     if (isNaN(poss1) || isNaN(poss2) || 0 > poss1 || 0 > poss2 || poss1 > myArray.length || poss2 > myArray.length) {
         alert('Nhập đúng index đi a iu')
     }
-    var newArray = []
-    newArray = newArray.concat(myArray);
+    var newArray =[...myArray];
     temp = newArray[poss1];
     newArray[poss1] = newArray[poss2];
     newArray[poss2] = temp;
@@ -137,7 +135,7 @@ function timSnt() {
             break
         }
     }
-    return isFlash ? temp1 : 'Không có số nguyên tố';
+    return isFlash ? temp1 : '-1';
 }
 
 
@@ -206,8 +204,8 @@ btn6.onclick = function () {
 
 var btn7 = document.getElementById('btn7');
 btn7.onclick = function () {
-    var sortedArray = []
-    sortedArray = sortedArray.concat(myArray)
+    
+    var sortedArray = [...myArray]
     document.getElementById('kq7').innerHTML = 'Mảng sau sắp xếp là: [' + sortedArray.sort((a, b) => a - b) + ']'
 
 }
